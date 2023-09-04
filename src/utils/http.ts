@@ -1,6 +1,4 @@
-import { resolveComponent } from 'vue'
-
-let baseUrl = ''
+let baseUrl = 'http://localhost:9002'
 let httpInterceptor = {
   invoke(option: UniApp.RequestOptions) {
     if (!option.url.startsWith('http')) {
@@ -24,9 +22,9 @@ uni.addInterceptor('request', httpInterceptor)
 uni.addInterceptor('uploadFile', httpInterceptor)
 //封装响应拦截器
 interface Data<T> {
-  code: string
+  code: number
   message: string
-  result: T
+  data: T
 }
 export const request = <T>(option: UniApp.RequestOptions) => {
   return new Promise<Data<T>>((resolve, reject) => {
@@ -41,7 +39,7 @@ export const request = <T>(option: UniApp.RequestOptions) => {
           reject(res)
         } else {
           uni.showToast({
-            icon: 'error',
+            icon: 'none',
             title: (res.data as Data<T>).message || '请求错误',
           })
           reject(res)
@@ -49,7 +47,7 @@ export const request = <T>(option: UniApp.RequestOptions) => {
       },
       fail: (error) => {
         uni.showToast({
-          icon: 'error',
+          icon: 'none',
           title: '网络错误，换个网络试试',
         })
         reject(error)

@@ -1,0 +1,31 @@
+@import '../../styles/index.scss';
+.logo {
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+}
+.register_container {
+  width: 70%;
+  margin: 100rpx auto 0;
+  .register-code {
+    border: 1px solid #007eff;
+    font-size: 34rpx;
+    height: 80rpx;
+    padding: 0 20rpx;
+    box-shadow: 1px 2px 2px #9cc5ee;
+    color: #007eff;
+    border-radius: 10rpx;
+    background-color: #f4f3f3;
+    margin-bottom: 30rpx;
+  }
+  .desc {
+    color: $desc-color;
+    font-size: 28rpx;
+    line-height: 1.5;
+    margin-bottom: 80rpx;
+  }
+  .register {
+    background-color: $background-color;
+    color: #fff;
+  }
+}
